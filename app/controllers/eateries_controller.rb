@@ -1,4 +1,7 @@
 class EateriesController < ApplicationController
+
+  before_action :login_required
+
   def new
   end
   def create
@@ -13,4 +16,13 @@ class EateriesController < ApplicationController
   def eatery_params
     params.require(:eatery).permit(:name)
   end
+
+  def user_params
+    params.requre(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def login_required
+    redirect_to login_path unless current_user
+  end
+
 end
