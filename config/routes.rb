@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   get 'eateries/new'
   post 'eateries/create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'lunch/go' # => "lunch#go"
   root 'lunch#go'
+  get '/login', to:'sessions#new'
+  post 'sessions/create'
 end
